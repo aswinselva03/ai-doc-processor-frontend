@@ -18,17 +18,21 @@ const fileData: File[] = [
 
 const FileBrowserPage: React.FC = () => {
   const [search, setSearch] = useState("");
-  const [filter, setFilter] = useState<"all" | "reviewed" | "yet to review">("all");
+  const [filter, setFilter] = useState<"all" | "reviewed" | "yet to review">(
+    "all"
+  );
 
   return (
-    <div className="bg-gray-100 min-h-screen">
+    <div className="bg-gray-100 h-full flex flex-col">
       <SearchFilterBar
         searchValue={search}
         onSearchChange={setSearch}
         filter={filter}
         onFilterChange={setFilter}
       />
-      <FileList files={fileData} search={search} filter={filter} />
+      <div className="flex-1 overflow-y-auto">
+        <FileList files={fileData} search={search} filter={filter} />
+      </div>
     </div>
   );
 };
