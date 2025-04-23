@@ -8,14 +8,19 @@ type Field = {
 };
 
 type FieldsExtractedProps = {
-  onFieldClick: (pageNumber: number) => void;
+  onFieldClick: (pageNumber: number, text: string) => void;
   onCompleteReview: () => void;
 };
 
 const dummyFields: Field[] = [
-  { id: 1, name: "Invoice Number", value: "INV-2024-001", page: 1 },
-  { id: 2, name: "Date", value: "2024-04-10", page: 2 },
-  { id: 3, name: "Total Amount", value: "$1,200.00", page: 3 },
+  {
+    id: 1,
+    name: "Invoice Number",
+    value: "Curabitur vel scelerisque odio",
+    page: 2,
+  },
+  { id: 2, name: "Date", value: "Proin eleifend id sapien a dictum", page: 3 },
+  { id: 3, name: "Total Amount", value: "Luctus Orci", page: 4 },
 ];
 
 const FieldsExtracted: React.FC<FieldsExtractedProps> = ({
@@ -44,7 +49,7 @@ const FieldsExtracted: React.FC<FieldsExtractedProps> = ({
           <div
             key={field.id}
             className="bg-gray-50 border border-gray-200 rounded p-3 shadow-sm hover:shadow cursor-pointer transition"
-            onClick={() => onFieldClick(field.page)}
+            onClick={() => onFieldClick(field.page, field.value)}
           >
             <label className="block text-sm font-medium text-gray-600 mb-1">
               {field.name}
